@@ -23,6 +23,8 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '**/*.json'
     TargetFolder: '$(build.artifactstagingdirectory)'
+- powershell: |
+   "the value: $(Secret)" | Out-File -FilePath  $(Build.ArtifactStagingDirectory)\DisplaySecret.txt
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
